@@ -1,4 +1,6 @@
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URL;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -17,9 +19,9 @@ public class App extends Configuracao {
     int filmeOuSerie = escolha.nextInt();
     String url = null;
     if (filmeOuSerie == 1) {
-      url = "https://imdb-api.com/en/API/Top250Movies/" + getApiKey();
+      url = "https://imdb-api.com/en/API/Top250Movies/" + getApiKeyImdb();
     } else if (filmeOuSerie == 2) {
-      url = "https://imdb-api.com/en/API/Top250TVs/" + getApiKey();
+      url = "https://imdb-api.com/en/API/Top250TVs/" + getApiKeyImdb();
     } else {
       System.out.println("Opção Inválida!");
     }
@@ -37,6 +39,16 @@ public class App extends Configuracao {
 
     //exibir e manipular os dados
     for (Map < String, String > filme: listaDeFilmes) {
+
+      String urlImagem = filme.get("image");
+      String titulo = filme.get("title");
+
+      InputStream inputStream = new URL(urlImagem).openStream();
+      String nomeArquivo = titulo + ".png";
+
+      var geradora = new GeradoraDeFigurinhas();
+      geradora.gera(inputStream, nomeArquivo);
+
       System.out.println("\u001b[1m\u001b[35m" + filme.get("title") + "\u001b[0m");
       System.out.println("\u001b[4m\u001b[34m" + filme.get("image") + "\u001b[0m");
       System.out.println("\u001b[37m \u001b[43m Classificação IMDB:" + filme.get("imDbRating") + "  \u001b[0m");

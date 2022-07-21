@@ -1,8 +1,13 @@
 public abstract class Configuracao {
-    private static String ApiKey;
+    private static String ApiKeyImdb;
+    private static String ApiKeyNasa;
 
-    public static String getApiKey() {
-        return ApiKey = "k_o9j8fokc";
+    public static String getApiKeyNasa() {
+        return ApiKeyNasa = "WdRoF32afUWyvX8gLgzrczInRT7PUNh8RispMUEO";
+    }
+
+    public static String getApiKeyImdb() {
+        return ApiKeyImdb = "k_o9j8fokc";
     }
 
 }
