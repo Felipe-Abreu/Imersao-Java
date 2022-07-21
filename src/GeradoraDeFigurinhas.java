@@ -4,18 +4,15 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.InputStream;
-
 import javax.imageio.ImageIO;
 
 public class GeradoraDeFigurinhas {
-    
+
     private int width;
 
     public void gera(InputStream inputStream, String nomeArquivo) throws Exception {
 
         // leitura da imagem
-        // InputStream inputStream = new FileInputStream(new File("imagens/filme.jpg"));
-        // InputStream inputStream = new URL("https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_Ratio0.6716_AL_.jpg").openStream();
         BufferedImage imagemOriginal = ImageIO.read(inputStream);
 
         // cria nova imagem em memória com transparência e tamanho novo
@@ -37,7 +34,14 @@ public class GeradoraDeFigurinhas {
         graphics.drawString("TOPZERA", largura - 500, novaAltura - 100);
 
         // escrever a nova imagem em um arquivo
-        ImageIO.write(novaImagem, "png", new File(nomeArquivo));
+
+        File salvaImagem = new File(nomeArquivo);
+        if (!salvaImagem.getParentFile().exists()) {
+            salvaImagem.getParentFile().mkdirs();
+        }
+        if (!salvaImagem.exists()) {
+            ImageIO.write(novaImagem, "png", salvaImagem);
+        }
 
     }
 }
