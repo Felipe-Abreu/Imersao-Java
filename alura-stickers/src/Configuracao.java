@@ -1,3 +1,4 @@
+
 public abstract class Configuracao {
     private static String ApiKeyImdb;
     private static String ApiKeyNasa;

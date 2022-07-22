@@ -1,8 +1,6 @@
 import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
 
 public class App extends Configuracao {
 
@@ -30,7 +28,7 @@ public class App extends Configuracao {
     // + "&start_date=2022-07-18&end_date=2022-07-20";
     // ExtratorDeConteudo extrator = new ExtratorDeConteudoNasa();
 
-    url = "http://localhost:8080/linguagens";
+    url = "https://linguagens-api.herokuapp.com/linguagens";
     ExtratorDeConteudo extrator = new ExtratorDeConteudoIMDB();
 
     var http = new ClienteHttp();
