@@ -22,14 +22,16 @@ public class App extends Configuracao {
     //   } else {
     //     System.out.println("Opção Inválida!");
     //   }
-      url = "https://api.mocki.io/v2/549a5d8b/Top250Movies";
     // }
-    ExtratorDeConteudo extrator = new ExtratorDeConteudoIMDB();
+    // ExtratorDeConteudo extrator = new ExtratorDeConteudoIMDB();
 
     // Extração da API da Nasa
     // url = "https://api.nasa.gov/planetary/apod?api_key=" + getApiKeyNasa()
     // + "&start_date=2022-07-18&end_date=2022-07-20";
     // ExtratorDeConteudo extrator = new ExtratorDeConteudoNasa();
+
+    url = "http://localhost:8080/linguagens";
+    ExtratorDeConteudo extrator = new ExtratorDeConteudoIMDB();
 
     var http = new ClienteHttp();
     String json = http.buscaDados(url);
